@@ -1,17 +1,20 @@
 extends KinematicBody2D
 
+const MOVEMENT = 10.0
+
+var thrust = 0.0
+
 func _physics_process(delta):
-	var thrust = 0.0
 	var angle = 0.0
 
 	if Input.is_action_pressed("ui_forwards"):
-		thrust = 1
-	elif Input.is_action_pressed("ui_backwards"):
-		thrust = -1
-	elif Input.is_action_pressed("ui_left"):
-		angle = -1
-	elif Input.is_action_pressed("ui_right"):
-		angle = 1
+		thrust = MOVEMENT
+	if Input.is_action_pressed("ui_backwards"):
+		thrust = -MOVEMENT
+	if Input.is_action_pressed("ui_left"):
+		angle = -2
+	if Input.is_action_pressed("ui_right"):
+		angle = 2
 		
 	var rot = rotation_degrees - 90
 		
@@ -22,5 +25,5 @@ func _physics_process(delta):
 	move_and_collide(direction)
 	rotate(deg2rad(angle))
 	
-	thrust /= delta
+	thrust *= 0.025 * delta
 	

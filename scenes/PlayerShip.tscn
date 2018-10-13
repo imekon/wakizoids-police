@@ -3,7 +3,9 @@
 [ext_resource path="res://scripts/PlayerShip.gd" type="Script" id=1]
 [ext_resource path="res://images/blueship.png" type="Texture" id=2]
 
-[node name="PlayerShip" type="KinematicBody2D"]
+[node name="PlayerShip" type="KinematicBody2D" groups=[
+"player",
+]]
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
