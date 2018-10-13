@@ -7,10 +7,15 @@ onready var rock4 = load("res://scenes/Rock4.tscn")
 onready var rock5 = load("res://scenes/Rock5.tscn")
 onready var rock6 = load("res://scenes/Rock6.tscn")
 
+onready var mining_ship = load("res://scenes/MiningShip.tscn")
+
 onready var scanner = $HUD/Scanner
 
 func _ready():
+	randomize()
+	
 	generate_rocks()
+	generate_mining_ships()
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_long_range_scanner"):
@@ -29,9 +34,17 @@ func generate_rocks():
 		generate_rock(rock4, random_range(65536), random_range(65536))
 		generate_rock(rock5, random_range(65536), random_range(65536))
 		generate_rock(rock6, random_range(65536), random_range(65536))
+
+func generate_mining_ships():
+	for i in range(100):
+		generate_mining_ship(mining_ship, random_range(65536), random_range(65536))
 	
 func generate_rock(resource, x, y):
 	var rock = resource.instance()
 	rock.position = Vector2(x, y)
 	add_child(rock)
 	
+func generate_mining_ship(resource, x, y):
+	var ship = resource.instance()
+	ship.position = Vector2(x, y)
+	add_child(ship)

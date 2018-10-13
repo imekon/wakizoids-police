@@ -23,13 +23,15 @@ func _process(delta):
 func _draw():
 	# draw a dot to signify the player
 	var rect = Rect2(TRACKING_WIDTH / 2, TRACKING_HEIGHT / 2, 4, 4)
-	var colour = Color(1.0, 0.0, 0.0, 0.7)
+	var colour = Color(1.0, 0.0, 0.0)
 	draw_rect(rect, colour)
 
 	# there's only one player but...
 	var players = get_tree().get_nodes_in_group("player")
 	var player = players[0]
 	var playerPos = player.position
+	
+	# location of the rocks
 	var rocks = get_tree().get_nodes_in_group("rocks")
 	for rock in rocks:
 		var pos = rock.position
@@ -38,5 +40,17 @@ func _draw():
 			var x = (pos.x - playerPos.x) * trackingRatio + TRACKING_WIDTH / 2
 			var y = (pos.y - playerPos.y) * trackingRatio + TRACKING_HEIGHT / 2
 			rect = Rect2(x - 1, y - 1, 3, 3)
-			colour = Color(0.5, 0.5, 1.0, 0.7)
+			colour = Color(0.5, 0.5, 1.0)
 			draw_rect(rect, colour)
+
+	var ships = get_tree().get_nodes_in_group("mining_ship")
+	for ship in ships:
+		var pos = ship.position
+		var dist = playerPos.distance_to(pos)
+		if dist < trackingRange2:
+			var x = (pos.x - playerPos.x) * trackingRatio + TRACKING_WIDTH / 2
+			var y = (pos.y - playerPos.y) * trackingRatio + TRACKING_HEIGHT / 2
+			rect = Rect2(x - 1, y - 1, 3, 3)
+			colour = Color(1.0, 0.5, 0.5)
+			draw_rect(rect, colour)
+		
