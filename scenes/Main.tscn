@@ -23,7 +23,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 65535, 65535 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Region", "texture" ]
 __meta__ = {
 "_edit_lock_": true
 }

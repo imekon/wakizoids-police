@@ -117,7 +117,7 @@ bbcode_enabled = true
 bbcode_text = "This is an entry to Godot Wild Jam no. 2, 2018
 Copyright (c) 2018 Pete Goodwin
 Theme: \"Hidden Within\"
-You are a police agent patrolling space. Your mission is to protect minors, respond to distress calls and persue pirates. Aliens are also present but much less so.
+You are a police agent patrolling space. Your mission is to protect miners, respond to distress calls and persue pirates. Aliens are also present but much less so.
 "
 visible_characters = -1
 percent_visible = 1.0
@@ -126,7 +126,7 @@ tab_size = 4
 text = "This is an entry to Godot Wild Jam no. 2, 2018
 Copyright (c) 2018 Pete Goodwin
 Theme: \"Hidden Within\"
-You are a police agent patrolling space. Your mission is to protect minors, respond to distress calls and persue pirates. Aliens are also present but much less so.
+You are a police agent patrolling space. Your mission is to protect miners, respond to distress calls and persue pirates. Aliens are also present but much less so.
 "
 scroll_active = true
 scroll_following = false

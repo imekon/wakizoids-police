@@ -45,6 +45,6 @@ func generate_rock(resource, x, y):
 	
 func generate_mining_ship(resource, x, y, reg):
 	var ship = resource.instance()
+	add_child(ship)
 	ship.position = Vector2(x, y)
 	ship.set_registration(reg)
-	add_child(ship)
