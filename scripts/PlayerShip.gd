@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MOVEMENT = 10.0
+const MOVEMENT = 20.0
 
 var thrust = 0.0
 
@@ -25,5 +25,5 @@ func _physics_process(delta):
 	move_and_collide(direction)
 	rotate(deg2rad(angle))
 	
-	thrust *= 0.025 * delta
+	thrust *= 0.9
 	

@@ -13,7 +13,6 @@ onready var scanner = $HUD/Scanner
 
 func _ready():
 	randomize()
-	
 	generate_rocks()
 	generate_mining_ships()
 	
@@ -37,14 +36,15 @@ func generate_rocks():
 
 func generate_mining_ships():
 	for i in range(100):
-		generate_mining_ship(mining_ship, random_range(65536), random_range(65536))
+		generate_mining_ship(mining_ship, random_range(65536), random_range(65536), "MNR" + str(i + 100))
 	
 func generate_rock(resource, x, y):
 	var rock = resource.instance()
 	rock.position = Vector2(x, y)
 	add_child(rock)
 	
-func generate_mining_ship(resource, x, y):
+func generate_mining_ship(resource, x, y, reg):
 	var ship = resource.instance()
 	ship.position = Vector2(x, y)
+	ship.set_registration(reg)
 	add_child(ship)
