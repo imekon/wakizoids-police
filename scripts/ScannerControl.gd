@@ -43,6 +43,7 @@ func _draw():
 			colour = Color(0.5, 0.5, 1.0)
 			draw_rect(rect, colour)
 
+	# location of the mining ships
 	var ships = get_tree().get_nodes_in_group("mining_ship")
 	for ship in ships:
 		var pos = ship.position
