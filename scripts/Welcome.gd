@@ -8,3 +8,6 @@ func _ready():
 	
 func on_start_pressed():
 	get_tree().change_scene("res://scenes/Main.tscn")
+
+func on_credits_pressed():
+	get_tree().change_scene("res://scenes/Credits.tscn")

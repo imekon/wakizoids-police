@@ -3,6 +3,14 @@ extends KinematicBody2D
 const MOVEMENT = 700.0
 
 var thrust = 0.0
+var score
+var energy
+var shields
+
+func _ready():
+	score = 0
+	energy = 500
+	shields = 200
 
 func _physics_process(delta):
 	var angle = 0.0

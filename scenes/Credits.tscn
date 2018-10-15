@@ -1,13 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scripts/Welcome.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Credits.gd" type="Script" id=1]
 [ext_resource path="res://wildjam/BEBAS.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://wildjam/head_bg_less.png" type="Texture" id=3]
-[ext_resource path="res://fonts/SF Atarian System.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/SF Atarian System.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 96
+size = 68
 outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
@@ -22,7 +21,7 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -35,10 +34,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Welcome" type="Node2D"]
-script = ExtResource( 1 )
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Credits" type="PanelContainer"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -51,9 +47,10 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 1 )
 _sections_unfolded = [ "Rect" ]
 
-[node name="Panel" type="Panel" parent="PanelContainer"]
+[node name="Panel" type="Panel" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -69,15 +66,15 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="Label" type="Label" parent="PanelContainer/Panel"]
+[node name="Label" type="Label" parent="Panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 28.0
-margin_top = 41.0
-margin_right = 1236.0
-margin_bottom = 132.0
+margin_left = 47.0
+margin_top = 44.0
+margin_right = 1224.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -85,27 +82,22 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-text = "WakiZoids: Police"
+text = "Credits"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts", "custom_fonts/font" ]
 
-[node name="Sprite" type="Sprite" parent="PanelContainer/Panel"]
-position = Vector2( 1025.22, 433.882 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 96.0
-margin_top = 198.0
-margin_right = 832.0
-margin_bottom = 638.0
+margin_left = 100.0
+margin_top = 144.0
+margin_right = 1151.0
+margin_bottom = 591.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -114,35 +106,39 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "This is an entry to Godot Wild Jam no. 2, 2018
-Copyright (c) 2018 Pete Goodwin
-Theme: \"Hidden Within\"
-You are a police agent patrolling space. Your mission is to protect miners, respond to distress calls and persue pirates. Aliens are also present but much less so.
-"
+bbcode_text = "Copyright (c) 2018 Pete Goodwin
+
+Font: http://www.1001fonts.com/sf-atarian-system-font.html
+
+Alien space ships: MillionthVector (http://millionthvector.blogspot.de)
+
+Stars and Rocks created in Filter Forge 6.0"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "This is an entry to Godot Wild Jam no. 2, 2018
-Copyright (c) 2018 Pete Goodwin
-Theme: \"Hidden Within\"
-You are a police agent patrolling space. Your mission is to protect miners, respond to distress calls and persue pirates. Aliens are also present but much less so.
-"
+text = "Copyright (c) 2018 Pete Goodwin
+
+Font: http://www.1001fonts.com/sf-atarian-system-font.html
+
+Alien space ships: MillionthVector (http://millionthvector.blogspot.de)
+
+Stars and Rocks created in Filter Forge 6.0"
 scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "custom_fonts", "custom_fonts/normal_font" ]
 
-[node name="StartButton" type="Button" parent="PanelContainer/Panel"]
+[node name="BackButton" type="Button" parent="Panel"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 293.0
-margin_top = 671.0
-margin_right = 401.0
-margin_bottom = 712.0
+margin_left = 608.0
+margin_top = 669.0
+margin_right = 700.0
+margin_bottom = 710.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -155,36 +151,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Start"
+text = "Back"
 flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts", "custom_fonts/font" ]
 
-[node name="CreditsButton" type="Button" parent="PanelContainer/Panel"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 429.0
-margin_top = 672.0
-margin_right = 561.0
-margin_bottom = 713.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Credits"
-flat = false
-align = 1
-_sections_unfolded = [ "custom_fonts", "custom_fonts/font" ]
-
-[connection signal="pressed" from="PanelContainer/Panel/StartButton" to="." method="on_start_pressed"]
-[connection signal="pressed" from="PanelContainer/Panel/CreditsButton" to="." method="on_credits_pressed"]
+[connection signal="pressed" from="Panel/BackButton" to="." method="on_back_pressed"]

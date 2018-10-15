@@ -9,6 +9,8 @@ onready var rock6 = load("res://scenes/Rock6.tscn")
 
 onready var mining_ship = load("res://scenes/MiningShip.tscn")
 
+onready var player = $PlayerShip
+onready var scoreLabel = $HUD/ScoreLabel
 onready var scanner = $HUD/Scanner
 
 func _ready():
@@ -17,8 +19,11 @@ func _ready():
 	generate_mining_ships()
 	
 func _process(delta):
+	scoreLabel.text = "Score: " + str(player.score)
 	if Input.is_action_just_pressed("ui_long_range_scanner"):
 		scanner.set_long_range_scanner()
+	elif Input.is_action_just_pressed("ui_medium_range_scanner"):
+		scanner.set_medium_range_scanner()
 	elif Input.is_action_just_pressed("ui_short_range_scanner"):
 		scanner.set_short_range_scanner()
 	

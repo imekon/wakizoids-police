@@ -12,6 +12,11 @@ func set_short_range_scan():
 	trackingRange2 = trackingRange / 2.0
 	trackingRatio = TRACKING_HEIGHT / trackingRange
 	
+func set_medium_range_scan():
+	trackingRange = 25000.0
+	trackingRange2 = trackingRange / 2.0
+	trackingRatio = TRACKING_HEIGHT / trackingRange	
+	
 func set_long_range_scan():
 	trackingRange = 65536.0
 	trackingRange2 = trackingRange / 2.0
