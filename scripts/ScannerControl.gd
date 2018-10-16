@@ -60,3 +60,16 @@ func _draw():
 			colour = Color(1.0, 0.5, 0.5)
 			draw_rect(rect, colour)
 		
+	# location of aliens
+	var aliens = get_tree().get_nodes_in_group("alien")
+	for alien in aliens:
+		var pos = alien.global_position
+		var dist = playerPos.distance_to(pos)
+		if dist < trackingRange2:
+			var x = (pos.x - playerPos.x) * trackingRatio + TRACKING_WIDTH / 2
+			var y = (pos.y - playerPos.y) * trackingRatio + TRACKING_HEIGHT / 2
+			rect = Rect2(x - 1, y - 1, 3, 3)
+			colour = Color(1.0, 1.0, 0.5)
+			draw_rect(rect, colour)
+		
+	

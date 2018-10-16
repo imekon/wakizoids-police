@@ -7,6 +7,11 @@ onready var rock4 = load("res://scenes/Rock4.tscn")
 onready var rock5 = load("res://scenes/Rock5.tscn")
 onready var rock6 = load("res://scenes/Rock6.tscn")
 
+onready var alien1 = load("res://scenes/Alien1.tscn")
+onready var alien2 = load("res://scenes/Alien2.tscn")
+onready var alien3 = load("res://scenes/Alien3.tscn")
+onready var alien4 = load("res://scenes/Alien4.tscn")
+
 onready var mining_ship = load("res://scenes/MiningShip.tscn")
 
 onready var player = $PlayerShip
@@ -17,6 +22,7 @@ func _ready():
 	randomize()
 	generate_rocks()
 	generate_mining_ships()
+	generate_alien_ships()
 	
 func _process(delta):
 	scoreLabel.text = "Score: " + str(player.score)
@@ -44,6 +50,13 @@ func generate_mining_ships():
 	# generate_mining_ship(mining_ship, 100, 100, "TST001")
 	for i in range(100):
 		generate_mining_ship(mining_ship, random_range(65536), random_range(65536), "MNR" + str(i + 100))
+		
+func generate_alien_ships():
+	for i in range(4):
+		generate_alien_ship(alien1, random_range(65536), random_range(65536))
+		generate_alien_ship(alien2, random_range(65536), random_range(65536))
+		generate_alien_ship(alien3, random_range(65536), random_range(65536))
+		generate_alien_ship(alien4, random_range(65536), random_range(65536))
 	
 func generate_rock(resource, x, y):
 	var rock = resource.instance()
@@ -55,3 +68,8 @@ func generate_mining_ship(resource, x, y, reg):
 	add_child(ship)
 	ship.position = Vector2(x, y)
 	ship.set_registration(reg)
+
+func generate_alien_ship(resource, x, y):
+	var ship = resource.instance()
+	add_child(ship)
+	ship.position = Vector2(x, y)
