@@ -51,7 +51,7 @@ func _draw():
 	# location of the mining ships
 	var ships = get_tree().get_nodes_in_group("mining_ship")
 	for ship in ships:
-		var pos = ship.position
+		var pos = ship.global_position
 		var dist = playerPos.distance_to(pos)
 		if dist < trackingRange2:
 			var x = (pos.x - playerPos.x) * trackingRatio + TRACKING_WIDTH / 2

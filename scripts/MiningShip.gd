@@ -2,7 +2,7 @@ extends Node2D
 
 enum STATE { IDLING, SEEKING, MINING }
 
-const MOVEMENT = 300.0
+const MOVEMENT = 100.0
 
 onready var node2d = $Node2D
 onready var registration = $Node2D/Registration
@@ -22,7 +22,7 @@ func _ready():
 	shields = 100
 	energy = 100
 	thrust = 0
-	var angle = randf() * 30
+	var angle = randf() * 360
 	body.rotate(deg2rad(angle))
 	
 func _physics_process(delta):

@@ -40,6 +40,8 @@ func generate_rocks():
 		generate_rock(rock6, random_range(65536), random_range(65536))
 
 func generate_mining_ships():
+	# test mining ship right next to player
+	# generate_mining_ship(mining_ship, 100, 100, "TST001")
 	for i in range(100):
 		generate_mining_ship(mining_ship, random_range(65536), random_range(65536), "MNR" + str(i + 100))
 	
