@@ -23,13 +23,15 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 65535, 65535 )
-_sections_unfolded = [ "Region", "texture" ]
+_sections_unfolded = [ "Region", "Z Index", "texture" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="PlayerShip" parent="." instance=ExtResource( 3 )]
 position = Vector2( 640, 400 )
+z_index = 10
+_sections_unfolded = [ "Z Index" ]
 
 [node name="Camera2D" type="Camera2D" parent="PlayerShip"]
 anchor_mode = 1
