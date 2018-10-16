@@ -2,11 +2,14 @@ extends Node2D
 
 const MOVEMENT = 100.0
 
+enum STATUS { HONEST, ROGUE_HIDDEN, ROGUE }
+
 onready var node2d = $Node2D
 onready var registration = $Node2D/Registration
 onready var body = $KinematicBody2D
 
 var running
+var status
 var credits
 var shields
 var energy
@@ -14,6 +17,7 @@ var thrust
 
 func _ready():
 	running = false
+	status = HONEST
 	credits = 0
 	shields = 100
 	energy = 100

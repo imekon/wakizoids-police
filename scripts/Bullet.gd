@@ -3,8 +3,10 @@ extends KinematicBody2D
 const MOVEMENT = 1000.0
 
 var start_time
+var player_owned
 
 func _ready():
+	player_owned = false
 	start_time = OS.get_unix_time()
 
 func _physics_process(delta):
