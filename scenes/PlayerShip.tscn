@@ -15,8 +15,17 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 build_mode = 0
 polygon = PoolVector2Array( 24.2256, -63.939, 40.5103, -35.3307, 46.232, -1.00085, 40.5103, 32.8889, 25.9861, 64.1379, 10.1416, 56.6557, -10.1042, 56.6557, -25.5087, 63.6978, -39.1526, 37.2902, -46.6348, 0.319519, -40.9131, -30.4893, -25.0686, -64.8192, -18.9068, -43.6931, 0.0186462, -52.9358, 18.504, -42.3728 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FiringPosition" type="Position2D" parent="."]
+position = Vector2( 0, -70 )
 

@@ -6,6 +6,11 @@ var thrust = 0.0
 var score
 var energy
 var shields
+var last_fired = 0
+
+onready var firing_position = $FiringPosition
+
+onready var bullet_resource = load("res://scenes/Bullet.tscn")
 
 func _ready():
 	score = 0
@@ -23,6 +28,9 @@ func _physics_process(delta):
 		angle = -2
 	if Input.is_action_pressed("ui_right"):
 		angle = 2
+		
+	if Input.is_action_pressed("ui_fire"):
+		fire()
 	
 	# -90 because the graphic is already rotated
 	var rot = rotation_degrees - 90
@@ -36,9 +44,19 @@ func _physics_process(delta):
 	var collide = move_and_collide(direction)
 	if collide != null:
 		process_collision(collide)
+		
 	rotate(deg2rad(angle))
 	
 	thrust *= 0.9
+	
+func fire():
+	var now = OS.get_ticks_msec()
+	if now - last_fired > 100:
+		var bullet = bullet_resource.instance()
+		bullet.position = firing_position.global_position
+		bullet.rotate(rotation)
+		get_parent().add_child(bullet)
+		last_fired = now
 	
 func process_collision(collision):
 	print("you hit something")

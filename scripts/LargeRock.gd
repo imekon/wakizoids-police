@@ -7,4 +7,6 @@ func _ready():
 	apply_impulse(Vector2(), Vector2(0, -ACCELERATION).rotated(deg2rad(angle)))
 
 func on_body_entered(body):
-	print("somebody hit us (rock)")
+	if body.is_in_group("bullet"):
+		body.queue_free()
+		queue_free()
