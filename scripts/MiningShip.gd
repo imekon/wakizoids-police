@@ -2,13 +2,15 @@ extends Node2D
 
 const MOVEMENT = 100.0
 
-enum STATUS { IDLE, SHOOTING, MOVING }
+enum STATUS { IDLE, TURNING, SHOOTING, FIRING, MOVING }
 enum ROGUE_STATUS { HONEST, ROGUE_HIDDEN, ROGUE }
 
 onready var node2d = $Node2D
 onready var registration = $Node2D/Registration
 onready var body = $KinematicBody2D
 onready var firing_position = $KinematicBody2D/FiringPosition
+
+onready var bullet_resource = load("res://scenes/Bullet.tscn")
 
 var running
 var status
@@ -19,6 +21,9 @@ var energy
 var thrust
 var target_rock
 var target_position
+var target_angle
+var last_distance
+var last_fired = 0
 
 func _ready():
 	running = false
@@ -30,6 +35,7 @@ func _ready():
 	thrust = 0
 	target_rock = null
 	var angle = randf() * 360
+	last_distance = 0
 	body.rotate(deg2rad(angle))
 	
 func _physics_process(delta):
@@ -45,8 +51,12 @@ func _physics_process(delta):
 			process_idle(delta, miner_position)
 		MOVING:
 			process_move(delta)
+		TURNING:
+			process_turning(delta)
 		SHOOTING:
 			shoot(miner_position, target_position)
+		FIRING:
+			firing()
 	
 func process_idle(delta, miner_position):
 	# Scan for rocks with 500 units, shoot them if found
@@ -85,8 +95,18 @@ func set_registration(text):
 	registration.text = text
 	
 func shoot(pos, body_pos):
-	# print("miner shoot!")
-	status = SHOOTING
+	status = TURNING
+	target_angle = rad2deg(body_pos.angle_to(pos))
+	
+func firing():
+	var now = OS.get_ticks_msec()
+	if now - last_fired > 100:
+		var bullet = bullet_resource.instance()
+		bullet.position = firing_position.global_position
+		bullet.rotate(body.rotation)
+		get_parent().add_child(bullet)
+		last_fired = now
+		status = IDLE
 	
 func move_towards(delta, miner_position, pos):
 	var angle = pos.angle_to(miner_position)
@@ -97,6 +117,20 @@ func move_towards(delta, miner_position, pos):
 func move_random(delta):
 	status = MOVING
 	process_move(delta)
+	
+func process_turning(delta):
+	var angle = body.rotation_degrees
+	var angle_delta
+	
+	if target_angle + 90 > angle:
+		angle_delta = 1
+	else:
+		angle_delta = -1
+		
+	if abs(angle - target_angle - 90) > 1:
+		body.rotate(deg2rad(angle_delta))
+	else:
+		status = FIRING
 	
 func process_move(delta):
 	thrust = MOVEMENT * delta
@@ -114,6 +148,7 @@ func process_move(delta):
 		for rock in rocks:
 			var pos = rock.position
 			var dist = miner_position.distance_to(pos)
+			last_distance = dist
 			if dist < 500:
 				target_rock = rock
 				target_position = rock.position
